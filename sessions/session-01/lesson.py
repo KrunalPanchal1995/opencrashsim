@@ -5,7 +5,7 @@ Run:  python start.py 1
 # %% [markdown]
 # # Session 1: why a car crumples
 # **A. Real-world problem.** A car hits a wall. The wall does not move, so the car must stop
-# in whatever distance the car itself has. If the front of the car is rigid, the car stops in
+# within whatever distance the car itself provides. If the front of the car is rigid, the car stops in
 # a few centimetres and the force is huge. If the front *crumples*, the car stops over half a
 # metre and the force is much smaller. Today you find the one relation behind that:
 #
@@ -28,7 +28,8 @@ G = 9.81  # m/s^2, gravitational acceleration used to express forces as "g"
 
 # %% [markdown]
 # ## Step 1: speed in the right unit
-# Physics wants metres per second. 1 km/h = 1000 m / 3600 s = 1/3.6 m/s.
+# The formulas need SI units, so speeds must be in metres per second.
+# 1 km/h = 1000 m / 3600 s = 1/3.6 m/s, so divide km/h by 3.6 (50 km/h = 13.89 m/s).
 
 # %%
 def kmh_to_ms(v_kmh):
@@ -48,11 +49,13 @@ def kinetic_energy(m, v):
 
 # %% [markdown]
 # ## Step 3: average force over a stopping distance
-# A force F acting over a distance d does work F*d. Setting work = kinetic energy:
+# A constant force F acting over a distance d does work F*d. Setting work = kinetic energy:
 #
 #     F * d = (1/2) m v^2     so     F = m v^2 / (2 d)
 #
 # Doubling the distance halves the force. That is the whole idea of a crumple zone.
+# Dividing by m gives the deceleration a = v^2 / (2 d): the mass cancels, so a heavy and a
+# light car stopped over the same distance feel the same number of g.
 
 # %%
 def stopping_force(m, v, d):
