@@ -1,6 +1,6 @@
 # Session 1: Why a car crumples: a longer stop means a smaller force
 
-[Session 1 — हिन्दी](README.hi.md)
+[Session 1 — हिन्दी](README.hi.md) · [Session 1 — മലയാളം](README.ml.md)
 
 *Level 1 (conceptual interactive model) · about 60 minutes · opencrashsim*
 
