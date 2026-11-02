@@ -23,6 +23,18 @@ def run_checks(L):
                    abs(L.max_speed_for_g(d50, 20.0) - v) < 1e-9))
     checks.append(("stop time for 50 km/h in 0.4917 m is about 70.8 ms",
                    abs(L.stop_time(v, d50) - 0.0708) < 5e-4))
+    # second worked example: a 12000 kg lorry with the same speed and crumple distance
+    m_l = 12000.0
+    t_l = L.stop_time(v, d50)
+    f_lt = L.force_from_time(m_l, v, t_l)
+    f_ld = L.force_from_distance(m_l, v, d50)
+    checks.append((f"lorry example: 12000 kg at 50 km/h in 0.4917 m feels {L.g_force(L.avg_decel(v, d50)):.1f} g for {t_l * 1000:.1f} ms, like the car",
+                   abs(L.g_force(L.avg_decel(v, d50)) - 20.0) < 1e-9 and abs(t_l - 0.0708) < 5e-4))
+    checks.append((f"lorry example: momentum {L.momentum(m_l, v):.0f} kg m/s and kinetic energy {L.kinetic_energy(m_l, v) / 1000:.0f} kJ",
+                   abs(L.momentum(m_l, v) - 166667) < 1 and abs(L.kinetic_energy(m_l, v) / 1000 - 1157.4) < 0.1))
+    checks.append((f"lorry example: impulse and energy both give {f_lt / 1000:.0f} kN, 12 times the car's force",
+                   abs(f_lt - f_ld) < 1e-6 and abs(f_lt / 1000 - 2354.4) < 0.1
+                   and abs(f_lt / L.force_from_distance(1000.0, v, d50) - 12.0) < 1e-9))
     return checks
 
 

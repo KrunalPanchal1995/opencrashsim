@@ -74,6 +74,16 @@ Run the lesson (`python start.py 2`), then open the live app: [Session 2: moment
 
 **Answer.** About 0.49 m at 50 km/h (70.8 ms, 196 kN) and about 1.97 m at 100 km/h (141.6 ms): the same g needs 4 times the distance.
 
+**Second example: a lorry with the same crumple distance.** A loaded lorry of mass m = 12000 kg (12 times the car) hits the same wall at the same speed, v = 50 km/h = 13.89 m/s, and is stopped over the same distance d = 0.4917 m. Which numbers change?
+
+1. Deceleration: a = v^2 / (2 d) = 192.9 m^2/s^2 / (2 * 0.4917 m) = 196.2 m/s^2 = 20.0 g. There is no mass in this formula, so it is exactly the car's value.
+2. Duration: t = 2 d / v = 2 * 0.4917 m / 13.89 m/s = 0.0708 s = 70.8 ms, also the same as the car.
+3. Momentum: p = m v = 12000 kg * 13.89 m/s = 166667 kg m/s (the car: 13889 kg m/s).
+4. Kinetic energy: KE = 0.5 * 12000 kg * (13.89 m/s)^2 = 1157407 J = 1157 kJ (the car: 96.5 kJ).
+5. Force by impulse: F = p / t = 166667 kg m/s / 0.0708 s = 2354 kN. By energy: F = KE / d = 1157407 J / 0.4917 m = 2354 kN. They agree, and 2354 kN = 12 * 196.2 kN.
+
+**Answer.** The lorry feels the same 20.0 g for the same 70.8 ms, but its structure must carry a force 12 times larger (2354 kN instead of 196 kN) and absorb 12 times the energy (1157 kJ instead of 96.5 kJ). The deceleration a = v^2 / (2 d) does not depend on the mass; the force F = m a does. `checkpoint.py` re-computes every number above.
+
 **Experiment.** Use a phone's slow-motion video of a trolley or toy car that runs into a soft stop, and read the stopping distance from the frames and the duration from the frame count (for example 240 frames per second). Compare d with (v / 2) t, which should agree if the deceleration is roughly constant. Real stops are not exactly constant-force (the force rises at first), so the measured d is usually a little different from the model's, and a phone video cannot measure forces directly.
 
 ## F. Assessment and design challenge
